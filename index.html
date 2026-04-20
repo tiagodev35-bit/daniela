@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daniela Neves Martins — Assessoria Jurídica</title>
+  <meta name="description" content="Dra. Daniela Neves Martins — Advogada inscrita na OAB/SP e OA Portugal. Especialista em Imigração, Família, Sucessões e Direito Criminal. Escritórios em Lisboa e Santos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:      #0a0a0a;
+      --charcoal:   #111111;
+      --surface:    #161616;
+      --gold:       #C9A84C;
+      --champagne:  #E8D5A3;
+      --gold-dim:   rgba(201,168,76,0.15);
+      --gold-line:  rgba(201,168,76,0.35);
+      --white:      #FAFAFA;
+      --muted:      #B0B0B0;
+      --subtle:     #5a5a5a;
+      --ff-serif:   'Playfair Display', Georgia, serif;
+      --ff-sans:    'Inter', system-ui, sans-serif;
+      --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--ff-sans);
+      font-weight: 400;
+      line-height: 1.7;
+      overflow-x: hidden;
+      /* Subtle grain texture */
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    }
+
+    ::selection { background: var(--gold); color: var(--black); }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { display: block; max-width: 100%; }
+
+    /* ─── Typography ─── */
+    .serif { font-family: var(--ff-serif); }
+
+    .label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .gold-line {
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 2rem;
+    }
+
+    .gold-line--left { margin-left: 0; }
+
+    /* ─── Reveal Animations ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── Section Divider ─── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-line), transparent);
+      margin: 0;
+    }
+
+    /* ─── Buttons ─── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      font-family: var(--ff-sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s var(--ease-out);
+      white-space: nowrap;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--black);
+    }
+    .btn-gold:hover {
+      background: var(--champagne);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--gold-line);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-1px);
+    }
+
+    /* ─── NAVBAR ─── */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.5rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s ease, padding 0.4s ease, border-color 0.4s ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    #navbar.scrolled {
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(12px);
+      padding: 1rem 4rem;
+      border-bottom-color: var(--gold-line);
+    }
+
+    .nav-logo {
+      font-family: var(--ff-serif);
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      padding: 0.6rem 1.6rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      transition: all 0.3s ease;
+    }
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--white);
+      transition: all 0.3s ease;
+    }
+
+    /* Mobile nav */
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: rgba(10,10,10,0.98);
+      backdrop-filter: blur(16px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-family: var(--ff-serif);
+      font-size: 1.8rem;
+      color: var(--white);
+      transition: color 0.3s ease;
+    }
+    .nav-mobile a:hover { color: var(--gold); }
+    .nav-mobile-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--muted);
+      background: none;
+      border: none;
+      color: var(--muted);
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(201,168,76,0.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      margin-bottom: 2rem;
+    }
+
+    .hero-monogram {
+      display: inline-block;
+      width: 72px;
+      height: 72px;
+      border: 1px solid var(--gold-line);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+    .hero-monogram svg { width: 36px; height: 36px; }
+
+    .hero-kicker {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .hero-title {
+      font-family: var(--ff-serif);
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      max-width: 900px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--champagne);
+    }
+
+    .hero-slogan {
+      font-family: var(--ff-serif);
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-style: italic;
+      color: var(--muted);
+      margin-bottom: 3rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--subtle);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    .hero-scroll svg { width: 18px; height: 18px; opacity: 0.4; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ─── SECTION BASE ─── */
+    .section {
+      padding: 8rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .section-title {
+      font-family: var(--ff-serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ─── SOBRE ─── */
+    #sobre-wrap {
+      background: var(--charcoal);
+    }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .sobre-photo {
+      position: relative;
+    }
+
+    .sobre-photo-frame {
+      aspect-ratio: 3/4;
+      background: var(--surface);
+      border: 1px solid var(--gold-line);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sobre-photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(201,168,76,0.15);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .photo-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      color: var(--subtle);
+    }
+    .photo-placeholder svg { width: 48px; height: 48px; opacity: 0.4; }
+    .photo-placeholder p {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .sobre-photo-accent {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      width: 80px;
+      height: 80px;
+      border-right: 1px solid var(--gold);
+      border-bottom: 1px solid var(--gold);
+    }
+    .sobre-photo-accent-tl {
+      position: absolute;
+      top: -1.5rem;
+      left: -1.5rem;
+      width: 80px;
+      height: 80px;
+      border-left: 1px solid var(--gold);
+      border-top: 1px solid var(--gold);
+    }
+
+    .sobre-content .label { margin-bottom: 1.2rem; display: block; }
+
+    .sobre-title {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .sobre-text {
+      color: var(--muted);
+      font-size: 0.97rem;
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+    }
+
+    .credenciais {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      border-top: 1px solid var(--gold-line);
+      padding-top: 2rem;
+    }
+
+    .credencial-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .credencial-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-top: 0.55rem;
+      flex-shrink: 0;
+    }
+
+    .credencial-item strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.1rem;
+    }
+
+    .credencial-item span {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ─── ÁREAS ─── */
+    #areas-wrap { background: var(--black); }
+
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--gold-line);
+      border: 1px solid var(--gold-line);
+    }
+
+    .area-card {
+      background: var(--charcoal);
+      padding: 3rem 2.5rem;
+      position: relative;
+      transition: background 0.4s ease;
+      overflow: hidden;
+    }
+
+    .area-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s var(--ease-out);
+    }
+
+    .area-card:hover { background: var(--surface); }
+    .area-card:hover::after { transform: scaleX(1); }
+
+    .area-number {
+      font-family: var(--ff-serif);
+      font-size: 3.5rem;
+      font-weight: 400;
+      color: var(--gold-dim);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      transition: color 0.4s ease;
+    }
+    .area-card:hover .area-number { color: rgba(201,168,76,0.25); }
+
+    .area-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1.5rem;
+    }
+    .area-icon svg { width: 100%; height: 100%; }
+
+    .area-title {
+      font-family: var(--ff-serif);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .area-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .area-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1.5rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: gap 0.3s ease;
+    }
+    .area-link:hover { gap: 0.7rem; }
+    .area-link svg { width: 14px; height: 14px; }
+
+    /* ─── ESCRITÓRIOS ─── */
+    #escritorios-wrap { background: var(--charcoal); }
+
+    .escritorios-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .escritorio-card {
+      border: 1px solid var(--gold-line);
+      padding: 3rem;
+      position: relative;
+      background: var(--black);
+      transition: border-color 0.4s ease;
+    }
+
+    .escritorio-card:hover {
+      border-color: var(--gold);
+    }
+
+    .escritorio-corner {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 28px 28px 0;
+      border-color: transparent var(--gold-line) transparent transparent;
+      transition: border-color 0.4s ease;
+    }
+    .escritorio-card:hover .escritorio-corner {
+      border-color: transparent var(--gold) transparent transparent;
+    }
+
+    .escritorio-flag {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .escritorio-pais {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .escritorio-nome {
+      font-family: var(--ff-serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+    }
+
+    .escritorio-endereco {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.8;
+      border-left: 2px solid var(--gold-line);
+      padding-left: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .escritorio-detalhe {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.8rem;
+      color: var(--subtle);
+    }
+    .escritorio-detalhe svg { width: 14px; height: 14px; color: var(--gold); flex-shrink: 0; }
+
+    /* ─── CONTATO ─── */
+    #contato-wrap { background: var(--black); }
+
+    .contato-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .contato-info .label { display: block; margin-bottom: 1.2rem; }
+
+    .contato-title {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .contato-text {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+    }
+
+    .contato-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contato-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--gold-line);
+      transition: all 0.3s ease;
+      background: transparent;
+    }
+    .contato-link:hover {
+      border-color: var(--gold);
+      background: var(--gold-dim);
+    }
+
+    .contato-link-icon {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--gold-line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.3s ease;
+    }
+    .contato-link:hover .contato-link-icon {
+      background: var(--gold-dim);
+      border-color: var(--gold);
+    }
+    .contato-link-icon svg { width: 16px; height: 16px; color: var(--gold); }
+
+    .contato-link-info strong {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.1rem;
+    }
+    .contato-link-info span {
+      font-size: 0.88rem;
+      color: var(--white);
+    }
+
+    /* Form */
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-input,
+    .form-textarea,
+    .form-select {
+      width: 100%;
+      background: var(--charcoal);
+      border: 1px solid rgba(90,90,90,0.4);
+      color: var(--white);
+      font-family: var(--ff-sans);
+      font-size: 0.9rem;
+      padding: 0.85rem 1rem;
+      outline: none;
+      transition: border-color 0.3s ease;
+      appearance: none;
+      border-radius: 0;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
+      border-color: var(--gold);
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: var(--subtle);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 1rem;
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      font-family: var(--ff-sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s var(--ease-out);
+      margin-top: 0.5rem;
+    }
+    .form-submit:hover {
+      background: var(--champagne);
+      transform: translateY(-1px);
+    }
+    .form-submit:active {
+      transform: translateY(0);
+    }
+
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--subtle);
+      margin-top: 0.8rem;
+      text-align: center;
+    }
+
+    /* Form success state */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 3rem 2rem;
+      border: 1px solid var(--gold-line);
+    }
+    .form-success.show { display: block; }
+    .form-success svg { width: 40px; height: 40px; color: var(--gold); margin: 0 auto 1rem; }
+    .form-success h4 { font-family: var(--ff-serif); font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .form-success p { font-size: 0.9rem; color: var(--muted); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--charcoal);
+      border-top: 1px solid var(--gold-line);
+      padding: 4rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .footer-left .footer-logo {
+      font-family: var(--ff-serif);
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .footer-left .footer-logo span { color: var(--gold); }
+
+    .footer-left p {
+      font-size: 0.78rem;
+      color: var(--subtle);
+      line-height: 1.7;
+    }
+
+    .footer-monogram {
+      width: 72px;
+      height: 72px;
+      border: 1px solid var(--gold-line);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .footer-monogram svg { width: 36px; height: 36px; }
+
+    .footer-right {
+      text-align: right;
+    }
+
+    .footer-oab {
+      font-size: 0.72rem;
+      color: var(--subtle);
+      line-height: 1.9;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: color 0.3s ease;
+    }
+    .footer-social a:hover { color: var(--champagne); }
+    .footer-social svg { width: 14px; height: 14px; }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(90,90,90,0.2);
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--subtle);
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 1024px) {
+      #navbar { padding: 1.5rem 2rem; }
+      #navbar.scrolled { padding: 1rem 2rem; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .section { padding: 6rem 2rem; }
+
+      .sobre-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .sobre-photo { max-width: 360px; margin: 0 auto; }
+
+      .areas-grid { grid-template-columns: 1fr; gap: 0; }
+
+      .escritorios-grid { grid-template-columns: 1fr; }
+
+      .contato-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .footer-right { text-align: center; }
+      .footer-monogram { margin: 0 auto; }
+
+      footer { padding: 3rem 2rem; }
+    }
+
+    @media (max-width: 640px) {
+      .hero-title { font-size: 2.4rem; }
+      .hero-cta { flex-direction: column; align-items: center; }
+      .form-row { grid-template-columns: 1fr; }
+      .area-card { padding: 2rem 1.5rem; }
+      .escritorio-card { padding: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAVBAR ─── -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">Daniela <span>Neves</span></a>
+
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#areas">Áreas</a></li>
+      <li><a href="#escritorios">Escritórios</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+
+    <a href="#contato" class="nav-cta">Agendar Consulta</a>
+
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="nav-mobile" id="mobileNav">
+    <button class="nav-mobile-close" id="mobileClose" aria-label="Fechar">✕</button>
+    <a href="#sobre" class="mobile-link">Sobre</a>
+    <a href="#areas" class="mobile-link">Áreas</a>
+    <a href="#escritorios" class="mobile-link">Escritórios</a>
+    <a href="#contato" class="mobile-link">Contato</a>
+    <a href="#contato" class="btn btn-gold" style="margin-top:1rem">Agendar Consulta</a>
+  </div>
+
+  <!-- ─── HERO ─── -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+
+    <div class="hero-eyebrow reveal">
+      <div class="hero-monogram">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text x="4" y="28" font-family="Playfair Display, serif" font-size="22" fill="#C9A84C" font-style="italic">DN</text>
+        </svg>
+      </div>
+      <p class="hero-kicker">Assessoria Jurídica</p>
+    </div>
+
+    <h1 class="hero-title reveal reveal-delay-1">
+      Direito com <em>precisão,</em><br>resultado com <em>confiança.</em>
+    </h1>
+
+    <p class="hero-slogan reveal reveal-delay-2">"Use nossa reputação a seu favor"</p>
+
+    <div class="hero-cta reveal reveal-delay-3">
+      <a href="https://wa.link/dmltcy" target="_blank" rel="noopener" class="btn btn-gold">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.857L0 24l6.335-1.51A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 01-5.006-1.371l-.36-.213-3.76.896.944-3.653-.234-.375A9.79 9.79 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+        WhatsApp
+      </a>
+      <a href="#sobre" class="btn btn-outline">Saiba Mais</a>
+    </div>
+
+    <div class="hero-scroll">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── SOBRE ─── -->
+  <div id="sobre-wrap">
+    <div id="sobre" class="section">
+      <div class="sobre-grid">
+        <div class="sobre-photo reveal">
+          <div class="sobre-photo-frame">
+            <div class="photo-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <p>Foto da Dra.</p>
+            </div>
+          </div>
+          <div class="sobre-photo-accent"></div>
+          <div class="sobre-photo-accent-tl"></div>
+        </div>
+
+        <div class="sobre-content reveal reveal-delay-1">
+          <span class="label">Sobre a advogada</span>
+          <span class="gold-line gold-line--left"></span>
+
+          <h2 class="sobre-title">Dra. Daniela Neves Martins</h2>
+
+          <p class="sobre-text">
+            Com mais de 15 anos de experiência em Direito Internacional Privado e Migratório, a Dra. Daniela Neves Martins construiu uma trajetória sólida ao servir brasileiros que buscam uma nova vida em Portugal — e portugueses que navigam pelo sistema jurídico brasileiro.
+          </p>
+          <p class="sobre-text">
+            Formada pela Universidade Católica de Santos, mestre em Ciência Jurídico-Forense pela Faculdade de Direito da Universidade de Lisboa, e pós-graduada em Processo Civil, ela alia rigor académico à experiência prática de dois sistemas jurídicos. Atua com excelência nas áreas de Imigração, Família, Sucessões e Direito Criminal.
+          </p>
+          <p class="sobre-text" style="margin-bottom:0">
+            Estamos aqui para moldar esse futuro ao seu lado — com escritórios em Lisboa e Santos, proporcionamos um atendimento rápido, eficaz e verdadeiramente personalizado.
+          </p>
+
+          <div class="credenciais">
+            <div class="credencial-item">
+              <div class="credencial-dot"></div>
+              <div>
+                <strong>OAB/SP — Brasil</strong>
+                <span>Inscrita desde 2008 · Nº 282.534</span>
+              </div>
+            </div>
+            <div class="credencial-item">
+              <div class="credencial-dot"></div>
+              <div>
+                <strong>Ordem dos Advogados — Portugal</strong>
+                <span>Inscrita desde 2009 · Nº 47.953L</span>
+              </div>
+            </div>
+            <div class="credencial-item">
+              <div class="credencial-dot"></div>
+              <div>
+                <strong>Mestre em Ciência Jurídico-Forense</strong>
+                <span>FDUL — Faculdade de Direito da Universidade de Lisboa</span>
+              </div>
+            </div>
+            <div class="credencial-item">
+              <div class="credencial-dot"></div>
+              <div>
+                <strong>Pós-graduação em Processo Civil</strong>
+                <span>Especialização em litígio e procedimentos judiciais</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ─── ÁREAS ─── -->
+  <div id="areas-wrap">
+    <div id="areas" class="section">
+      <div class="section-header reveal">
+        <span class="label">Especialidades</span>
+        <span class="gold-line"></span>
+        <h2 class="section-title">Áreas de Atuação</h2>
+        <p class="section-subtitle">Representação jurídica especializada em três pilares que definem a vida das pessoas — com competência dual em Portugal e no Brasil.</p>
+      </div>
+
+      <div class="areas-grid">
+        <div class="area-card reveal">
+          <div class="area-number">01</div>
+          <div class="area-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#C9A84C" stroke-width="1.5">
+              <circle cx="24" cy="24" r="20"/>
+              <path d="M24 12a6 6 0 100 12 6 6 0 000-12z"/>
+              <path d="M14 36c0-5.523 4.477-10 10-10s10 4.477 10 10"/>
+              <path d="M8 24h4M36 24h4M24 8v4M24 36v4"/>
+            </svg>
+          </div>
+          <h3 class="area-title">Imigração</h3>
+          <p class="area-text">Assessoria completa em Direito Migratório desde 2009. Vistos, autorizações de residência, reagrupamento familiar, naturalização e regularização — acompanhamos cada etapa da sua jornada entre Brasil e Portugal.</p>
+          <a href="#contato" class="area-link">
+            Consultar
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+
+        <div class="area-card reveal reveal-delay-1">
+          <div class="area-number">02</div>
+          <div class="area-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#C9A84C" stroke-width="1.5">
+              <path d="M24 6L8 14v10c0 9.94 6.84 19.24 16 22 9.16-2.76 16-12.06 16-22V14L24 6z"/>
+              <path d="M18 24l4 4 8-8"/>
+            </svg>
+          </div>
+          <h3 class="area-title">Família e Sucessões</h3>
+          <p class="area-text">Casamento, divórcio, união estável, guarda de filhos, pensão alimentícia, inventários, herança e tutela. Protegemos os vínculos e o patrimônio da sua família com discrição e competência.</p>
+          <a href="#contato" class="area-link">
+            Consultar
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+
+        <div class="area-card reveal reveal-delay-2">
+          <div class="area-number">03</div>
+          <div class="area-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#C9A84C" stroke-width="1.5">
+              <path d="M12 6h24v36H12z"/>
+              <path d="M18 14h12M18 20h12M18 26h8"/>
+              <path d="M30 34l4 4M34 34l-4 4"/>
+              <circle cx="32" cy="32" r="6"/>
+            </svg>
+          </div>
+          <h3 class="area-title">Criminal</h3>
+          <p class="area-text">Defesa criminal especializada e representação legal em processos criminais nos dois países. Atuamos desde inquéritos policiais até recursos nos tribunais superiores, com rigor técnico e pleno respeito pelos seus direitos.</p>
+          <a href="#contato" class="area-link">
+            Consultar
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ─── ESCRITÓRIOS ─── -->
+  <div id="escritorios-wrap">
+    <div id="escritorios" class="section">
+      <div class="section-header reveal">
+        <span class="label">Presença Internacional</span>
+        <span class="gold-line"></span>
+        <h2 class="section-title">Nossos Escritórios</h2>
+        <p class="section-subtitle">Dois escritórios. Dois sistemas jurídicos. Uma equipe coesa que atende você onde quer que esteja.</p>
+      </div>
+
+      <div class="escritorios-grid">
+        <div class="escritorio-card reveal">
+          <div class="escritorio-corner"></div>
+          <div class="escritorio-flag">🇵🇹</div>
+          <p class="escritorio-pais">Portugal — Lisboa</p>
+          <h3 class="escritorio-nome">Escritório de Lisboa</h3>
+          <address class="escritorio-endereco" style="font-style:normal">
+            Avenida João II, 35B, Sala 7A<br>
+            Parque das Nações<br>
+            Lisboa, 1990-083 — Portugal
+          </address>
+          <div class="escritorio-detalhe">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <span>OA Portugal · Cédula 47.953L</span>
+          </div>
+        </div>
+
+        <div class="escritorio-card reveal reveal-delay-1">
+          <div class="escritorio-corner"></div>
+          <div class="escritorio-flag">🇧🇷</div>
+          <p class="escritorio-pais">Brasil — Santos / SP</p>
+          <h3 class="escritorio-nome">Escritório de Santos</h3>
+          <address class="escritorio-endereco" style="font-style:normal">
+            Alameda Armenio Mendes, 66<br>
+            6º Andar, Sala 1002<br>
+            Santos — SP, 11035-260 — Brasil
+          </address>
+          <div class="escritorio-detalhe">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <span>OAB/SP · Cédula 282.534</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ─── CONTATO ─── -->
+  <div id="contato-wrap">
+    <div id="contato" class="section">
+      <div class="contato-grid">
+        <div class="contato-info reveal">
+          <span class="label">Fale Conosco</span>
+          <span class="gold-line gold-line--left"></span>
+          <h2 class="contato-title">Agende sua<br>Consulta</h2>
+          <p class="contato-text">A primeira conversa é o passo mais importante. Entre em contacto e descreva a sua situação — respondemos com brevidade e discrição.</p>
+
+          <div class="contato-links">
+            <a href="https://wa.link/dmltcy" target="_blank" rel="noopener" class="contato-link">
+              <div class="contato-link-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.857L0 24l6.335-1.51A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 01-5.006-1.371l-.36-.213-3.76.896.944-3.653-.234-.375A9.79 9.79 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+              </div>
+              <div class="contato-link-info">
+                <strong>WhatsApp</strong>
+                <span>Mensagem direta · Portugal</span>
+              </div>
+            </a>
+
+            <a href="mailto:danielaneves-47953l@adv.oa.pt" class="contato-link">
+              <div class="contato-link-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="contato-link-info">
+                <strong>E-mail</strong>
+                <span>danielaneves-47953l@adv.oa.pt</span>
+              </div>
+            </a>
+
+            <a href="https://instagram.com/danielaneves.adv.pt" target="_blank" rel="noopener" class="contato-link">
+              <div class="contato-link-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </div>
+              <div class="contato-link-info">
+                <strong>Instagram</strong>
+                <span>@danielaneves.adv.pt</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <div id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="nome">Nome completo</label>
+                <input class="form-input" type="text" id="nome" name="nome" placeholder="O seu nome" autocomplete="name" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">E-mail</label>
+                <input class="form-input" type="email" id="email" name="email" placeholder="email@exemplo.com" autocomplete="email" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="assunto">Área de interesse</label>
+              <select class="form-select" id="assunto" name="assunto">
+                <option value="" disabled selected>Selecione uma área</option>
+                <option value="imigracao">Imigração</option>
+                <option value="familia">Família e Sucessões</option>
+                <option value="criminal">Criminal</option>
+                <option value="outro">Outro</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="mensagem">Mensagem</label>
+              <textarea class="form-textarea" id="mensagem" name="mensagem" placeholder="Descreva brevemente a sua situação..."></textarea>
+            </div>
+
+            <button type="button" class="form-submit" id="formSubmit">
+              Enviar Mensagem
+            </button>
+            <p class="form-note">As suas informações são confidenciais e protegidas por sigilo profissional.</p>
+          </div>
+
+          <div class="form-success" id="formSuccess">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <h4>Mensagem enviada</h4>
+            <p>Entraremos em contacto em breve.<br>Obrigada pela confiança.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-logo">Daniela <span>Neves</span> Martins</div>
+        <p>Assessoria Jurídica em Imigração,<br>Família, Sucessões e Criminal.</p>
+      </div>
+
+      <div class="footer-monogram">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text x="4" y="28" font-family="Playfair Display, serif" font-size="22" fill="#C9A84C" font-style="italic">DN</text>
+        </svg>
+      </div>
+
+      <div class="footer-right">
+        <p class="footer-oab">
+          OAB/SP · Cédula 282.534 · Inscrita desde 2008<br>
+          OA Portugal · Cédula 47.953L · Inscrita desde 2009
+        </p>
+        <div class="footer-social">
+          <a href="https://instagram.com/danielaneves.adv.pt" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            @danielaneves.adv.pt
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © <span id="year"></span> Daniela Neves Martins. Todos os direitos reservados. · danielaneves-47953l@adv.oa.pt
+    </div>
+  </footer>
+
+  <script>
+    // ─── Copyright year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ─── Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ─── Mobile nav
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileClose = document.getElementById('mobileClose');
+
+    hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+    mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+
+    document.querySelectorAll('.mobile-link, .nav-mobile .btn').forEach(link => {
+      link.addEventListener('click', () => mobileNav.classList.remove('open'));
+    });
+
+    // ─── Intersection Observer for reveals
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Trigger hero reveals on load
+    window.addEventListener('load', () => {
+      document.querySelectorAll('#hero .reveal').forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), i * 120);
+      });
+    });
+
+    // ─── Form validation & pseudo-submit
+    const formSubmit = document.getElementById('formSubmit');
+    const formSuccess = document.getElementById('formSuccess');
+    const contactForm = document.getElementById('contactForm');
+
+    formSubmit.addEventListener('click', () => {
+      const nome = document.getElementById('nome').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const assunto = document.getElementById('assunto').value;
+      const mensagem = document.getElementById('mensagem').value.trim();
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      let errors = [];
+      if (!nome) errors.push('nome');
+      if (!email || !emailRegex.test(email)) errors.push('email');
+      if (!assunto) errors.push('assunto');
+      if (!mensagem) errors.push('mensagem');
+
+      // Clear previous error styles
+      document.querySelectorAll('.form-input, .form-textarea, .form-select').forEach(el => {
+        el.style.borderColor = '';
+      });
+
+      if (errors.length > 0) {
+        errors.forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.style.borderColor = '#c0392b';
+        });
+        return;
+      }
+
+      // Build WhatsApp message
+      const msg = encodeURIComponent(
+        `Olá Dra. Daniela, meu nome é ${nome}.\n\nÁrea de interesse: ${assunto}\n\n${mensagem}\n\nE-mail para contacto: ${email}`
+      );
+
+      // Open WhatsApp with pre-filled message
+      window.open(`https://wa.me/351000000000?text=${msg}`, '_blank');
+
+      // Show success
+      contactForm.style.display = 'none';
+      formSuccess.classList.add('show');
+    });
+  </script>
+</body>
+</html>
