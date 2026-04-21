@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Dra. Daniela Neves — Contato</title>
+  <meta name="description" content="Entre em contacto com a Dra. Daniela Neves Martins — Advogada especialista em Imigração, Família e Criminal em Portugal e Brasil." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:     #0a0a0a;
+      --gold:      #C9A84C;
+      --champagne: #E8D5A3;
+      --gold-dim:  rgba(201,168,76,0.18);
+      --white:     #FAFAFA;
+      --muted:     #B0B0B0;
+      --ff-serif:  'Playfair Display', Georgia, serif;
+      --ff-sans:   'Inter', system-ui, sans-serif;
+      --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      background: var(--black);
+      font-family: var(--ff-sans);
+      color: var(--white);
+    }
+
+    /* ── Photo Background ── */
+    .photo-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      will-change: transform, opacity;
+    }
+
+    .photo-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 10%;
+      display: block;
+    }
+
+    /* ── Gradient Overlays ── */
+    .overlay-left {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        105deg,
+        rgba(10,10,10,0.97) 0%,
+        rgba(10,10,10,0.88) 30%,
+        rgba(10,10,10,0.55) 55%,
+        rgba(10,10,10,0.1) 75%,
+        transparent 100%
+      );
+    }
+
+    .overlay-bottom {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      z-index: 1;
+      background: linear-gradient(to top, var(--black) 40%, transparent 100%);
+    }
+
+    /* ── Grain ── */
+    .grain {
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ── Main Content ── */
+    .content {
+      position: relative;
+      z-index: 3;
+      height: 100dvh;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(1.5rem, 5vw, 3rem);
+      max-width: 520px;
+    }
+
+    /* ── Top Bar ── */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .monogram {
+      width: 52px;
+      height: 52px;
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-serif);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--gold);
+      will-change: transform, opacity;
+    }
+
+    .back-link {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      will-change: opacity;
+    }
+    .back-link:hover { color: var(--gold); }
+    .back-link svg { width: 14px; height: 14px; }
+
+    /* ── Hero Info ── */
+    .hero-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 1.5rem;
+    }
+
+    .gold-bar {
+      width: 50px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 1.4rem;
+      transform-origin: left;
+      will-change: transform;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+      will-change: transform, opacity;
+    }
+
+    .hero-name {
+      font-family: var(--ff-serif);
+      font-size: clamp(2.2rem, 7vw, 3.4rem);
+      font-weight: 500;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+      will-change: transform, opacity;
+    }
+
+    .hero-credential {
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      line-height: 1.7;
+      will-change: opacity;
+    }
+
+    /* ── Contact Buttons ── */
+    .contact-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.1rem;
+      border: 1px solid rgba(201,168,76,0.2);
+      background: rgba(10,10,10,0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      text-decoration: none;
+      color: var(--white);
+      transition: border-color 0.3s ease, background 0.3s ease, transform 0.2s ease;
+      will-change: transform, opacity;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold-dim);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .contact-btn:hover {
+      border-color: var(--gold);
+      transform: translateX(4px);
+    }
+    .contact-btn:hover::before { opacity: 1; }
+
+    .contact-btn:active { transform: translateX(2px) scale(0.99); }
+
+    .btn-icon {
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(201,168,76,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--gold);
+      transition: background 0.3s ease;
+    }
+    .contact-btn:hover .btn-icon { background: rgba(201,168,76,0.12); }
+    .btn-icon svg { width: 16px; height: 16px; }
+
+    .btn-text {
+      flex: 1;
+    }
+    .btn-text small {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.15rem;
+    }
+    .btn-text strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    .btn-arrow {
+      color: var(--gold);
+      font-size: 1rem;
+      opacity: 0.6;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .contact-btn:hover .btn-arrow { opacity: 1; transform: translateX(3px); }
+
+    /* ── Site Button (special) ── */
+    .btn-site {
+      border-color: transparent;
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.35);
+      margin-top: 0.2rem;
+    }
+    .btn-site:hover {
+      background: rgba(201,168,76,0.15);
+    }
+    .btn-site .btn-text strong { color: var(--gold); }
+
+    /* ── Desktop Layout ── */
+    @media (min-width: 768px) {
+      html, body { overflow: hidden; }
+
+      /* Full-screen dark overlay, stronger in center for legibility */
+      .overlay-left {
+        background: radial-gradient(
+          ellipse 70% 80% at 50% 50%,
+          rgba(10,10,10,0.75) 0%,
+          rgba(10,10,10,0.55) 50%,
+          rgba(10,10,10,0.3) 100%
+        );
+      }
+
+      .overlay-bottom {
+        height: 45%;
+        background: linear-gradient(to top, rgba(10,10,10,0.92) 30%, transparent 100%);
+      }
+
+      /* "Ver Site" fixed top-right */
+      .back-link {
+        position: fixed;
+        top: 2rem;
+        right: 2.5rem;
+        z-index: 10;
+      }
+
+      /* Monogram fixed top-left */
+      .top-bar {
+        position: fixed;
+        top: 2rem;
+        left: 2.5rem;
+        z-index: 10;
+      }
+
+      /* Center all content */
+      .content {
+        position: fixed;
+        inset: 0;
+        max-width: none;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 6rem 2rem 4rem;
+        text-align: center;
+      }
+
+      .hero-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 2.5rem;
+        flex: 0;
+      }
+
+      .gold-bar { margin: 0 auto 1.4rem; }
+
+      .contact-grid {
+        width: 100%;
+        max-width: 420px;
+      }
+
+      .contact-btn:hover { transform: translateX(0) translateY(-2px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Photo -->
+  <div class="photo-bg" id="photoBg">
+    <img src="./daniela.jpg" alt="Dra. Daniela Neves Martins" />
+  </div>
+
+  <!-- Overlays -->
+  <div class="overlay-left"></div>
+  <div class="overlay-bottom"></div>
+  <div class="grain"></div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="monogram" id="monogram">DN</div>
+      <a href="./index.html" class="back-link" id="backLink">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M19 12H5M12 5l-7 7 7 7"/>
+        </svg>
+        Ver Site
+      </a>
+    </div>
+
+    <!-- Hero Info -->
+    <div class="hero-info">
+      <div class="gold-bar" id="goldBar"></div>
+      <p class="hero-eyebrow" id="eyebrow">Assessoria Jurídica Internacional</p>
+      <h1 class="hero-name" id="heroName">Dra. Daniela<br>Neves Martins</h1>
+      <p class="hero-credential" id="heroCredential">
+        OAB/SP · Nº 282.534 &nbsp;·&nbsp; OA Portugal · Nº 47.953L<br>
+        Imigração &nbsp;·&nbsp; Família &nbsp;·&nbsp; Criminal
+      </p>
+    </div>
+
+    <!-- Contact Buttons -->
+    <div class="contact-grid" id="contactGrid">
+
+      <a href="https://wa.link/dmltcy" target="_blank" rel="noopener" class="contact-btn" id="btn1">
+        <span class="btn-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.857L0 24l6.335-1.51A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 01-5.006-1.371l-.36-.213-3.76.896.944-3.653-.234-.375A9.79 9.79 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+          </svg>
+        </span>
+        <span class="btn-text">
+          <small>WhatsApp · Portugal</small>
+          <strong>Agendar Consulta</strong>
+        </span>
+        <span class="btn-arrow">→</span>
+      </a>
+
+      <a href="mailto:danielaneves-47953l@adv.oa.pt" class="contact-btn" id="btn2">
+        <span class="btn-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </span>
+        <span class="btn-text">
+          <small>E-mail</small>
+          <strong>danielaneves-47953l@adv.oa.pt</strong>
+        </span>
+        <span class="btn-arrow">→</span>
+      </a>
+
+      <a href="https://instagram.com/danielaneves.adv.pt" target="_blank" rel="noopener" class="contact-btn" id="btn3">
+        <span class="btn-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </span>
+        <span class="btn-text">
+          <small>Instagram</small>
+          <strong>@danielaneves.adv.pt</strong>
+        </span>
+        <span class="btn-arrow">→</span>
+      </a>
+
+      <a href="./index.html" class="contact-btn btn-site" id="btn4">
+        <span class="btn-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+          </svg>
+        </span>
+        <span class="btn-text">
+          <small>Saiba mais</small>
+          <strong>Ver Site Completo</strong>
+        </span>
+        <span class="btn-arrow">→</span>
+      </a>
+
+    </div>
+  </div>
+
+  <script>
+    // All elements start invisible — GSAP controls everything
+    gsap.set('#photoBg', { opacity: 0, scale: 1.06 });
+    gsap.set('#monogram', { opacity: 0, scale: 0.6, rotation: -15 });
+    gsap.set('#backLink', { opacity: 0 });
+    gsap.set('#goldBar', { scaleX: 0 });
+    gsap.set('#eyebrow', { opacity: 0, y: 16 });
+    gsap.set('#heroName', { opacity: 0, y: 30 });
+    gsap.set('#heroCredential', { opacity: 0, y: 12 });
+    gsap.set(['#btn1','#btn2','#btn3','#btn4'], { opacity: 0, y: 24 });
+
+    // Master timeline
+    const tl = gsap.timeline({ delay: 0.2 });
+
+    // 1. Photo fades in and zooms to natural size
+    tl.to('#photoBg', {
+      opacity: 1,
+      scale: 1,
+      duration: 1.6,
+      ease: 'power2.out'
+    })
+
+    // 2. Monogram spins in
+    .to('#monogram', {
+      opacity: 1,
+      scale: 1,
+      rotation: 0,
+      duration: 0.7,
+      ease: 'back.out(1.5)'
+    }, '-=1.0')
+
+    // 3. Back link
+    .to('#backLink', {
+      opacity: 1,
+      duration: 0.5,
+      ease: 'power2.out'
+    }, '-=0.5')
+
+    // 4. Gold bar draws left to right
+    .to('#goldBar', {
+      scaleX: 1,
+      duration: 0.7,
+      ease: 'power3.inOut'
+    }, '-=0.2')
+
+    // 5. Eyebrow text
+    .to('#eyebrow', {
+      opacity: 1,
+      y: 0,
+      duration: 0.55,
+      ease: 'power3.out'
+    }, '-=0.3')
+
+    // 6. Name slides up — the hero moment
+    .to('#heroName', {
+      opacity: 1,
+      y: 0,
+      duration: 0.75,
+      ease: 'power3.out'
+    }, '-=0.25')
+
+    // 7. Credentials
+    .to('#heroCredential', {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: 'power2.out'
+    }, '-=0.35')
+
+    // 8. Buttons cascade up with stagger
+    .to(['#btn1','#btn2','#btn3','#btn4'], {
+      opacity: 1,
+      y: 0,
+      duration: 0.55,
+      ease: 'power3.out',
+      stagger: 0.1
+    }, '-=0.2');
+
+    // Subtle idle float on monogram
+    gsap.to('#monogram', {
+      y: -5,
+      duration: 2.8,
+      ease: 'sine.inOut',
+      yoyo: true,
+      repeat: -1,
+      delay: 2.5
+    });
+  </script>
+</body>
+</html>
